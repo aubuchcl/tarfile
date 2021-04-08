@@ -6,7 +6,7 @@ RUN mkdir -p /opt/package
 
 WORKDIR /opt/package
 
-COPY ./test.tar.gz ./
+COPY ./file.tar.gz ./
 
 COPY ./main.py ./
 
