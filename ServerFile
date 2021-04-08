@@ -12,4 +12,4 @@ COPY ./main.py ./
 
 RUN chmod +x main.py
 
-CMD main.py
+CMD ./main.py
