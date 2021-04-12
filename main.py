@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-import datetime
-import resource
-import time
-import os
-logtimer = os.getenv("LOG_TIMER")
+import http.server
+import socketserver
+PORT = 80
 
-os.system("nohup python3 -m http.server 80 --bind :: > output.log &")
-while True:
-  time.sleep(15)
-  print("hey now")
+Handleer = http.server.SimpleHTTPRequestHandler
+
+with socketserver.TCPServer(("", PORT), Handleer) as httpd:
+  print('serving')
+  httpd.serve_forever()
