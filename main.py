@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+import socket
 import http.server
 import socketserver
 PORT = 80
+class HTTPServerV6(HTTPServer):
+  address_family = socket.AF_INET6
 
-Handleer = http.server.SimpleHTTPRequestHandler
+Handler = http.server.SimpleHTTPRequestHandler
 
-with socketserver.TCPServer(("", PORT), Handleer) as httpd:
-  print('serving')
-  httpd.serve_forever()
+server = HTTPServerV6(("::", 80), Handler)
+server.serve_forever()
